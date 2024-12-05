@@ -3,6 +3,9 @@ import twAnimate from 'tailwindcss-animate'
 
 export default {
   darkMode: 'media',
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {

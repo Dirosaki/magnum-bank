@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
-import { ThemeProvider } from '@/providers/theme-provider'
-
 import '@/styles/global.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -17,10 +15,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR" suppressHydrationWarning>
-      <body className={`${inter.className} antialiased`}>
-        <ThemeProvider>{children}</ThemeProvider>
-      </body>
-    </html>
+    <>
+      <head>
+        <link href="/logo-magnum.png" rel="icon" sizes="192x192" />
+      </head>
+      <html className="dark" lang="pt-BR" suppressHydrationWarning>
+        <body className={`${inter.className} antialiased`}>{children}</body>
+      </html>
+    </>
   )
 }
