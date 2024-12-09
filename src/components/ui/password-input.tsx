@@ -31,10 +31,10 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
           aria-pressed={isVisible}
           type="button"
           className="absolute inset-y-0 end-0 flex h-full w-10 items-center justify-center rounded-e-lg border
-            border-transparent text-muted-foreground/80 outline-none transition-[color] hover:text-foreground
-            focus:z-10 focus-visible:border-foreground focus-visible:outline-none focus-visible:ring
-            focus-visible:ring-foreground/20 disabled:pointer-events-none disabled:cursor-not-allowed
-            disabled:opacity-50 peer-placeholder-shown:hidden"
+            border-transparent text-muted-foreground/80 outline-none transition-[color]
+            peer-placeholder-shown:hidden hover:text-foreground focus:z-10 focus-visible:border-foreground
+            focus-visible:outline-none focus-visible:ring focus-visible:ring-foreground/20
+            disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
           onClick={toggleVisibility}
         >
           {isVisible ? (
