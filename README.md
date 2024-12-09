@@ -1,3 +1,5 @@
+<img src="https://imgur.com/klM8zaK.png"/>
+
 # Desafio Front-End Magnum Bank
 
 ### Screenshots
@@ -39,6 +41,16 @@ Inicie o servidor
 
 ```bash
   npm run dev
+```
+
+---
+
+### Variáveis de ambiente
+
+```
+DATABASE_URL=
+DIRECT_URL=
+JWT_SECRET=
 ```
 
 ---
