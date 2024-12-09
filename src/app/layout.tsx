@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
+import { Toaster } from '@/components/ui/sonner'
 import '@/styles/global.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -20,7 +21,10 @@ export default function RootLayout({
         <link href="/logo-magnum.png" rel="icon" sizes="192x192" />
       </head>
       <html className="dark" lang="pt-BR" suppressHydrationWarning>
-        <body className={`${inter.className} antialiased`}>{children}</body>
+        <body className={`${inter.className} antialiased`}>
+          {children}
+          <Toaster />
+        </body>
       </html>
     </>
   )

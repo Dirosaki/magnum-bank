@@ -48,6 +48,7 @@
         "rule": "(^(is|has)[A-Z]([A-Za-z0-9]?)+)|asChild"
       }
     ],
+    "react/jsx-no-bind": "off",
     "react/jsx-sort-props": [
       "error",
       {
@@ -129,7 +130,8 @@
     "tailwindcss/no-custom-classname": [
       "error",
       {
-        "callees": ["classnames", "clsx", "ctl", "cva", "tv", "cn"]
+        "callees": ["classnames", "clsx", "ctl", "cva", "tv", "cn"],
+        "whitelist": ["toaster"]
       }
     ],
     "tailwindcss/classnames-order": [

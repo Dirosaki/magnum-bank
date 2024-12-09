@@ -1,3 +1,4 @@
+import twScrollbar from 'tailwind-scrollbar'
 import type { Config } from 'tailwindcss'
 import twAnimate from 'tailwindcss-animate'
 
@@ -58,5 +59,5 @@ export default {
       },
     },
   },
-  plugins: [twAnimate],
+  plugins: [twAnimate, twScrollbar],
 } satisfies Config
