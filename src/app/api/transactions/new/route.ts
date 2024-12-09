@@ -37,7 +37,7 @@ const tedSchema = z.object({
   }),
 })
 
-export const transferSchema = z.intersection(
+const transferSchema = z.intersection(
   z.object({
     direction: z.literal('SENT'),
     amount: z.coerce.number().positive(),
