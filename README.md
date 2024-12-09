@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Desafio Front-End Magnum Bank
 
-## Getting Started
+### Screenshots
 
-First, run the development server:
+| Login                                        | Cadastro                                     | Home                                         | Modal de Transferência                       |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| ![Screenshot](https://imgur.com/4So0BNJ.png) | ![Screenshot](https://imgur.com/pir5B3s.png) | ![Screenshot](https://imgur.com/2TNqOOv.png) | ![Screenshot](https://imgur.com/mFbGahI.png) |
+
+---
+
+### Demonstração
+
+Visualize a aplicação:
+[https://magnum-bank.vercel.app/](https://magnum-bank.vercel.app/)
+
+---
+
+### Rodando localmente
+
+Clone o projeto
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  git clone https://github.com/Dirosaki/magnum-bank.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Entre no diretório do projeto
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+  cd magnum-bank
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Instale as dependências
 
-## Learn More
+```bash
+  npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+Inicie o servidor
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+  npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+### Tecnologias e serviços utilizados
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Princípais:** `ReactJS`, `NextJS`, `Prisma`, `Typescript`, `Zustand`, `React Query`, `React-Router-Dom`, `React-Hook-Form`, `Zod`, `TailwindCSS`, `ShadCn`, `Motion`, `Vercel` e `Neon`.
+**Outras:** `Eslint`, `Prettier`, `Husky` e `Lint-Staged`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+<details>
+<summary>Por que as escolhi?</summary>
+
+- `NextJS`: Como precisava de um fluxo de autenticação JWT, decidi usar o NextJS para poder criar, e acabei criando o back-end das transações também, além de aprender um pouco sobre o Next 15 que ainda não tinha utilizado.
+
+- `Zustand`: Ele é bem leve e bem performático, nessa aplicação lidei com poucos estados, utilizei ele mais para gerenciar o saldo do usuário e os modais.
+
+- `React Query`: Utilizei essa biblioteca para lidar com o gerenciamento de estados assíncronos, tem muitas outras ferramentas dessa biblioteca que faltou utilizar para aprimorar ainda mais essa aplicação.
+
+- `react-hook-form`: Sintaxe mais simples, mais performático e o `formik` caiu no esquecimento.
+
+- `tailwindCSS`: Quando se fala de produtividade acho que esta biblioteca se sobressai muito em relação ao `styled-components`, apesar de ter mais experiência com styled-components, estou optando por tailwindCSS em todos os projetos novos.
+
+- `react-router-dom`: Quando se fala de roteamento definitivamente essa é a biblioteca mais utilizada e com maior comunidade, além de me sentir totalmente confortável com ela.
+
+</details>
+
+---
+
+### Referências
+
+- [ChatGPT](https://chat.openai.com/) - Utilizei o ChatGPT para me auxiliar na criação da função que gera um saldo aleatório para o usuário.
+- [Prisma](https://www.prisma.io/docs) - Utilizei a documentação para me auxiliar com a criação do endpoint `/transactions/new`.
+
+---
+
+### Observações
+
+- No momento atual as transferências só são permitidas através de e-mails previamente cadastrados.
