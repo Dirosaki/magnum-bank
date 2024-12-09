@@ -8,10 +8,16 @@ interface AxiosErrorData {
   message: string
 }
 
-export function errorHandler(error: unknown) {
-  if (isAxiosError<AxiosErrorData>(error) && typeof error.response?.data.error === 'string') {
-    const errorMessage = API_ERRORS[error.response.data.error]
-    return toast.error(errorMessage)
+export function errorHandler(err: unknown) {
+  if (isAxiosError<AxiosErrorData>(err) && typeof err.response?.data.error === 'string') {
+    const { error } = err.response.data
+
+    if (error === 'ZOD_ERROR') {
+      return toast.error('Erro de validação')
+    }
+
+    const message = API_ERRORS[error] ?? 'Erro desconhecido.'
+    return toast.error(message)
   }
 
   return toast.error('Erro interno do servidor')
