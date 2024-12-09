@@ -7,7 +7,6 @@ import { withAuth } from '@/lib/withAuth'
 const pixSchema = z.object({
   type: z.literal('PIX'),
   recipient: z.object({
-    name: z.string().min(1).trim(),
     document: z
       .string()
       .min(1)
@@ -54,7 +53,8 @@ export const POST = withAuth(async (request) => {
     if (!success)
       return NextResponse.json(
         {
-          error: error.issues,
+          message: error.issues,
+          error: 'ZOD_ERROR',
         },
         { status: 400 }
       )

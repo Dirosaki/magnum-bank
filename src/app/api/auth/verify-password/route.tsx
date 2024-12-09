@@ -16,7 +16,8 @@ export const POST = withAuth(async (request) => {
   if (!success)
     return NextResponse.json(
       {
-        error: error.issues,
+        message: error.issues,
+        error: 'ZOD_ERROR',
       },
       { status: 400 }
     )
