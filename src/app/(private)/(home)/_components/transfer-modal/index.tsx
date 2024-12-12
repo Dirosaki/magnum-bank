@@ -9,6 +9,7 @@ import { toast } from 'sonner'
 import { PasswordVerifyModal } from '@/components/modals/password-verify-modal'
 import { Button } from '@/components/ui/button'
 import { DialogClose, DialogContent, DialogFooter } from '@/components/ui/dialog'
+import { MODAL_IDS } from '@/constants/modal-ids'
 import {
   formatTransaction,
   ITransactionFormatted,
@@ -65,16 +66,16 @@ export default function TransferModal({ type }: TransferModalProps) {
     try {
       await mutate.mutateAsync(form.getValues())
       toast.success('Transferência realizada com sucesso')
-      closeModal('transfer-modal')
+      closeModal(MODAL_IDS.TRANSFER_MODAL)
     } catch (error) {
       errorHandler(error)
-      closeModal('password-verify-modal')
+      closeModal(MODAL_IDS.PASSWORD_VERIFY)
     }
   }
 
   const handleSubmit = form.handleSubmit(() => {
     openModal({
-      id: 'password-verify-modal',
+      id: MODAL_IDS.PASSWORD_VERIFY,
       children: <PasswordVerifyModal onSubmit={handleTransfer} />,
     })
   })

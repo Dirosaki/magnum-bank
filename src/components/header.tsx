@@ -5,6 +5,7 @@ import Image from 'next/image'
 
 import { LogoutModal } from '@/components/modals/logout-modal'
 import { Button } from '@/components/ui/button'
+import { MODAL_IDS } from '@/constants/modal-ids'
 import { useStore } from '@/store'
 
 export function Header() {
@@ -12,7 +13,7 @@ export function Header() {
 
   function handleOpenLogoutModal() {
     openModal({
-      id: 'logout-modal',
+      id: MODAL_IDS.LOGOUT,
       children: <LogoutModal />,
     })
   }

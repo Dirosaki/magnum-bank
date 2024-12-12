@@ -1,6 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
+import { MODAL_IDS } from '@/constants/modal-ids'
 import { useStore } from '@/store'
 
 import TransferModal from './transfer-modal'
@@ -9,7 +10,7 @@ export function TransferButtons() {
   const openModal = useStore((state) => state.modal.openModal)
 
   function handleOpenTransferModal(type: 'PIX' | 'TED') {
-    openModal({ id: 'transfer-modal', children: <TransferModal type={type} /> })
+    openModal({ id: MODAL_IDS.TRANSFER_MODAL, children: <TransferModal type={type} /> })
   }
 
   return (

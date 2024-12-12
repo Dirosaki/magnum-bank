@@ -1,11 +1,13 @@
-import { ReactNode } from 'react'
+import { ReactElement } from 'react'
+
+import { MODAL_IDS } from '@/constants/modal-ids'
 
 import { StoreSlice } from '../store'
 
 interface ModalType {
-  id: string
+  id: MODAL_IDS
   isOpen: boolean
-  children: ReactNode
+  children: ReactElement
 }
 
 interface ModalState {
@@ -13,8 +15,8 @@ interface ModalState {
 }
 
 interface ModalActions {
-  openModal: ({ id, children }: { id: string; children: ReactNode }) => void
-  closeModal: (id: string) => void
+  openModal: ({ id, children }: Pick<ModalType, 'children' | 'id'>) => void
+  closeModal: (id: MODAL_IDS) => void
 }
 
 export type ModalSlice = ModalActions & ModalState

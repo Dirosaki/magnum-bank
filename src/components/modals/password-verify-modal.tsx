@@ -16,6 +16,7 @@ import {
 import { ErrorMessage } from '@/components/ui/error-message'
 import { FormField } from '@/components/ui/form-field'
 import { Input } from '@/components/ui/input'
+import { MODAL_IDS } from '@/constants/modal-ids'
 import { PasswordVerifyFormData, passwordVerifySchema } from '@/schemas/password-verify-schema'
 import { useStore } from '@/store'
 import { errorHandler } from '@/utils/errorHandler'
@@ -42,7 +43,7 @@ export function PasswordVerifyModal({ onSubmit }: PasswordVerifyModalProps) {
     try {
       await mutation.mutateAsync(formData)
       await onSubmit()
-      closeModal('password-verify-modal')
+      closeModal(MODAL_IDS.PASSWORD_VERIFY)
     } catch (error) {
       errorHandler(error)
     }

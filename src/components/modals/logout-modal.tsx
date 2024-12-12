@@ -12,6 +12,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog'
+import { MODAL_IDS } from '@/constants/modal-ids'
 import { useStore } from '@/store'
 
 export function LogoutModal() {
@@ -25,7 +26,7 @@ export function LogoutModal() {
   async function handleLogout() {
     await mutation.mutateAsync()
     router.push('/auth/login')
-    closeModal('logout-modal')
+    closeModal(MODAL_IDS.LOGOUT)
   }
 
   return (
