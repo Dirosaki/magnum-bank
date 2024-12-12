@@ -7,11 +7,11 @@ import { ErrorMessage } from '@/components/ui/error-message'
 import { FormField } from '@/components/ui/form-field'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { TransferFormData } from '@/schemas/transfer-schema'
 import { formatDocument } from '@/utils/formatDocument'
+import { numberMask } from '@/utils/masks'
 
-import { TransferFormData } from './schema'
-
-export function PixTransfer({ onSubmit }: { onSubmit: () => void }) {
+export function TedTransfer({ onSubmit }: { onSubmit: () => void }) {
   const {
     formState: { errors },
     ...form
@@ -20,9 +20,9 @@ export function PixTransfer({ onSubmit }: { onSubmit: () => void }) {
   return (
     <>
       <DialogHeader>
-        <DialogTitle>Transferência PIX</DialogTitle>
+        <DialogTitle>Transferência TED</DialogTitle>
         <DialogDescription>
-          Realize transferências instantâneas utilizando apenas a chave Pix.
+          Envie dinheiro entre contas bancárias com segurança e rapidez.
         </DialogDescription>
       </DialogHeader>
 
@@ -42,6 +42,7 @@ export function PixTransfer({ onSubmit }: { onSubmit: () => void }) {
               <CurrencyInput id="amount" value={field.value} onChange={field.onChange} />
             )}
           />
+
           <ErrorMessage>{errors.amount?.message}</ErrorMessage>
         </FormField>
         <FormField>
@@ -52,7 +53,7 @@ export function PixTransfer({ onSubmit }: { onSubmit: () => void }) {
             maxLength={18}
             placeholder="Digite o CPF ou CNPJ do favorecido"
             {...form.register('recipient.document', {
-              onChange: (event: ChangeEvent<HTMLInputElement>) => {
+              onChange: (event) => {
                 event.target.value = formatDocument(event.target.value)
               },
             })}
@@ -71,13 +72,42 @@ export function PixTransfer({ onSubmit }: { onSubmit: () => void }) {
           <ErrorMessage>{errors.recipient?.email?.message}</ErrorMessage>
         </FormField>
         <FormField>
-          <Label htmlFor="pixKey">Chave Pix</Label>
+          <Label htmlFor="bank">Banco</Label>
           <Input
-            id="pixKey"
-            placeholder="Digite a chave Pix"
-            {...form.register('recipient.pixKey')}
+            id="bank"
+            placeholder="Digite o nome do banco"
+            {...form.register('recipient.bank')}
           />
-          <ErrorMessage>{errors.recipient?.pixKey?.message}</ErrorMessage>
+          <ErrorMessage>{errors.recipient?.bank?.message}</ErrorMessage>
+        </FormField>
+        <FormField>
+          <Label htmlFor="agency">Agência</Label>
+          <Input
+            id="agency"
+            inputMode="numeric"
+            maxLength={4}
+            placeholder="Digite o número da agência"
+            {...form.register('recipient.agency', {
+              onChange: (event: ChangeEvent<HTMLInputElement>) => {
+                event.target.value = numberMask(event.target.value)
+              },
+            })}
+          />
+          <ErrorMessage>{errors.recipient?.agency?.message}</ErrorMessage>
+        </FormField>
+        <FormField>
+          <Label htmlFor="account">Conta</Label>
+          <Input
+            id="account"
+            inputMode="numeric"
+            placeholder="Digite o nome do banco"
+            {...form.register('recipient.account', {
+              onChange: (event: ChangeEvent<HTMLInputElement>) => {
+                event.target.value = numberMask(event.target.value)
+              },
+            })}
+          />
+          <ErrorMessage>{errors.recipient?.account?.message}</ErrorMessage>
         </FormField>
       </form>
     </>

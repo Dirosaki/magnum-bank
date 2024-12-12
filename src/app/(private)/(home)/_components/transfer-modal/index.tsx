@@ -6,6 +6,7 @@ import axios from 'axios'
 import { FormProvider, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
+import { PasswordVerifyModal } from '@/components/modals/password-verify-modal'
 import { Button } from '@/components/ui/button'
 import { DialogClose, DialogContent, DialogFooter } from '@/components/ui/dialog'
 import {
@@ -13,13 +14,11 @@ import {
   ITransactionFormatted,
   ITransactionResponse,
 } from '@/models/transactions'
+import { TransferFormData, transferSchema } from '@/schemas/transfer-schema'
 import { useStore } from '@/store'
 import { errorHandler } from '@/utils/errorHandler'
 
-import { PasswordVerifyModal } from '../password-verify-modal'
-
 import { PixTransfer } from './pix-transfer'
-import { TransferFormData, transferSchema } from './schema'
 import { TedTransfer } from './ted-transfer'
 
 interface TransferModalProps {

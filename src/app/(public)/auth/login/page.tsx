@@ -21,9 +21,8 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Link } from '@/components/ui/link'
 import { PasswordInput } from '@/components/ui/password-input'
+import { LoginFormData, loginSchema } from '@/schemas/login-schema'
 import { errorHandler } from '@/utils/errorHandler'
-
-import { LoginFormData, loginSchema } from './schema'
 
 export default function Login() {
   const router = useRouter()

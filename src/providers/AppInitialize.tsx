@@ -11,7 +11,7 @@ interface AppInitializeProps {
   user: UserState
 }
 
-export default function AppInitialize({ user, children }: AppInitializeProps) {
+export function AppInitialize({ user, children }: AppInitializeProps) {
   const [queryClient] = useState(
     () =>
       new QueryClient({

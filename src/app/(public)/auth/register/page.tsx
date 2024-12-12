@@ -21,9 +21,8 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Link } from '@/components/ui/link'
 import { PasswordInput } from '@/components/ui/password-input'
+import { RegisterFormData, registerSchema } from '@/schemas/register-schema'
 import { errorHandler } from '@/utils/errorHandler'
-
-import { RegisterFormData, registerSchema } from './schema'
 
 export default function Register() {
   const router = useRouter()

@@ -1,18 +1,20 @@
 'use client'
 
-import axios from 'axios'
 import { LogOut } from 'lucide-react'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
 
+import { LogoutModal } from '@/components/modals/logout-modal'
 import { Button } from '@/components/ui/button'
+import { useStore } from '@/store'
 
-export default function Header() {
-  const router = useRouter()
+export function Header() {
+  const openModal = useStore((state) => state.modal.openModal)
 
-  async function handleLogout() {
-    await axios.post('/api/auth/logout')
-    router.push('/auth/login')
+  function handleOpenLogoutModal() {
+    openModal({
+      id: 'logout-modal',
+      children: <LogoutModal />,
+    })
   }
 
   return (
@@ -24,7 +26,7 @@ export default function Header() {
         className="ml-auto"
         size="icon"
         variant="ghost"
-        onClick={handleLogout}
+        onClick={handleOpenLogoutModal}
       >
         <LogOut size={16} />
       </Button>

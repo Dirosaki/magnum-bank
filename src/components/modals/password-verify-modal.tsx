@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 
 import { Button } from '@/components/ui/button'
 import {
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -15,10 +16,9 @@ import {
 import { ErrorMessage } from '@/components/ui/error-message'
 import { FormField } from '@/components/ui/form-field'
 import { Input } from '@/components/ui/input'
+import { PasswordVerifyFormData, passwordVerifySchema } from '@/schemas/password-verify-schema'
 import { useStore } from '@/store'
 import { errorHandler } from '@/utils/errorHandler'
-
-import { PasswordVerifyFormData, passwordVerifySchema } from './schema'
 
 interface PasswordVerifyModalProps {
   onSubmit: () => Promise<void>
@@ -50,8 +50,8 @@ export function PasswordVerifyModal({ onSubmit }: PasswordVerifyModalProps) {
 
   return (
     <DialogContent
-      className="flex max-h-full flex-col overflow-y-auto scrollbar-none sm:max-h-[calc(100vh-96px)]"
-      closable
+      className="flex max-h-full flex-col overflow-y-auto scrollbar-none sm:max-h-[calc(100vh-96px)] sm:max-w-sm"
+      closable={!isSubmitting}
     >
       <DialogHeader>
         <DialogTitle>Confirme a sua senha</DialogTitle>
@@ -69,14 +69,11 @@ export function PasswordVerifyModal({ onSubmit }: PasswordVerifyModalProps) {
         </FormField>
       </form>
       <DialogFooter className="flex-row space-x-2">
-        <Button
-          className="w-full"
-          type="button"
-          variant="secondary"
-          onClick={() => closeModal('password-verify-modal')}
-        >
-          Voltar
-        </Button>
+        <DialogClose asChild>
+          <Button className="w-full" disabled={isSubmitting} type="button" variant="secondary">
+            Voltar
+          </Button>
+        </DialogClose>
         <Button
           className="w-full"
           disabled={isSubmitting}

@@ -12,7 +12,7 @@ interface TransactionListResponse {
   transactions: ITransactionResponse[]
 }
 
-export default function TransactionList() {
+export function TransactionList() {
   const query = useQuery({
     queryKey: ['transactions'],
     queryFn: async () => {

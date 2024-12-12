@@ -6,7 +6,7 @@ import { useToggle } from '@/hooks/useToggle'
 import { useStore } from '@/store'
 import { formatCurrency } from '@/utils/formatCurrency'
 
-export default function Balance() {
+export function Balance() {
   const [isValueVisible, toggleValueVisibility] = useToggle(true)
   const balance = useStore((state) => state.user.balance)
 
