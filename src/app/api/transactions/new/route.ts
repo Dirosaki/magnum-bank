@@ -69,6 +69,16 @@ export const POST = withAuth(async (request) => {
       )
     }
 
+    if (request.user.email === data.recipient.email) {
+      return NextResponse.json(
+        {
+          message: 'You cannot send money to yourself.',
+          error: 'YOU_CANNOT_SEND_TO_YOURSELF',
+        },
+        { status: 400 }
+      )
+    }
+
     const recipient = await db.user.findUnique({
       where: { email: data.recipient.email },
     })
