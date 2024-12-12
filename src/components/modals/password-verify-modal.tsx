@@ -1,7 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
-import { Loader2 } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 
 import { Button } from '@/components/ui/button'
@@ -77,14 +76,11 @@ export function PasswordVerifyModal({ onSubmit }: PasswordVerifyModalProps) {
         </DialogClose>
         <Button
           className="w-full"
-          disabled={isSubmitting}
           form="password-verify-form"
+          isLoading={isSubmitting}
           type="submit"
         >
-          {!isSubmitting && 'Confirmar'}
-          {isSubmitting && (
-            <Loader2 className="animate-spin duration-700" size={16} strokeWidth={2} />
-          )}
+          Confirmar
         </Button>
       </DialogFooter>
     </DialogContent>

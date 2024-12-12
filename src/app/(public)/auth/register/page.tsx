@@ -2,7 +2,6 @@
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import axios from 'axios'
-import { Loader2 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
@@ -93,11 +92,8 @@ export default function Register() {
         </CardContent>
 
         <CardFooter className="flex flex-col gap-8">
-          <Button className="w-full" disabled={isSubmitting} type="submit">
-            {!isSubmitting && 'Cadastrar'}
-            {isSubmitting && (
-              <Loader2 className="animate-spin duration-700" size={16} strokeWidth={2} />
-            )}
+          <Button className="w-full" isLoading={isSubmitting} type="submit">
+            Cadastrar
           </Button>
 
           <p className="flex flex-wrap justify-center gap-1 text-nowrap px-4 text-center text-sm text-muted-foreground">

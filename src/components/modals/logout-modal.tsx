@@ -1,6 +1,5 @@
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
-import { Loader2 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
 import { Button } from '@/components/ui/button'
@@ -54,15 +53,12 @@ export function LogoutModal() {
         </DialogClose>
         <Button
           className="w-full"
-          disabled={mutation.isPending}
           form="password-verify-form"
+          isLoading={mutation.isPending}
           type="button"
           onClick={handleLogout}
         >
-          {!mutation.isPending && 'Sair'}
-          {mutation.isPending && (
-            <Loader2 className="animate-spin duration-700" size={16} strokeWidth={2} />
-          )}
+          Sair
         </Button>
       </DialogFooter>
     </DialogContent>

@@ -35,6 +35,7 @@ export default function TransferModal({ type }: TransferModalProps) {
   const balance = useStore((state) => state.user.balance)
   const openModal = useStore((state) => state.modal.openModal)
   const closeModal = useStore((state) => state.modal.closeModal)
+
   const queryClient = useQueryClient()
 
   const mutate = useMutation({
@@ -83,7 +84,7 @@ export default function TransferModal({ type }: TransferModalProps) {
   return (
     <DialogContent
       className="flex max-h-[calc(100%-48px)] flex-col overflow-y-auto scrollbar-none sm:max-h-[calc(100vh-96px)]"
-      closable
+      closable={!mutate.isPending}
     >
       <FormProvider {...form}>
         {type === 'PIX' && <PixTransfer onSubmit={handleSubmit} />}
@@ -96,7 +97,7 @@ export default function TransferModal({ type }: TransferModalProps) {
             Cancelar
           </Button>
         </DialogClose>
-        <Button className="w-full" form="transfer-form" type="submit">
+        <Button className="w-full" form="transfer-form" isLoading={mutate.isPending} type="submit">
           Transferir
         </Button>
       </DialogFooter>
